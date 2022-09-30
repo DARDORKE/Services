@@ -1,0 +1,14 @@
+Nous avons vu comment utiliser un service que nous avons nous même créé indirectement.
+Pour cet exercice pratique, nous vous demandons d'utiliser un service directement proposé
+par Symfony en suivant la démarche mise en place pour utiliser le ProductRepository au sein de notre méthode index().
+
+Si ça n'est pas déjà fait, créez une entité Product à l'aide du bundle Maker puis implémentez
+le code de ProductController, disponible plus haut. Configurez une base de données contenant quelques produits
+; vous pouvez utiliser une fixture si vous l'estimez nécessaire.
+
+Ceci étant fait, imaginons que le nom du premier produit n'apparaît pas correctement dans votre navigateur web.
+Aussi, vous souhaitez déboguer votre application pour comprendre ce que contient la variable censée stocker
+le nom du produit.
+
+Pour ce faire, injectez le service LoggerInterface à votre méthode index(). Notez que la méthode info(),
+issue de cette classe, permet justement d'afficher les informations qui lui sont passées en argument en console.
