@@ -2,22 +2,23 @@
 
 namespace App\Controller;
 
-use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProductRepository;
-use Symfony\Component\HttpFoundation\Response;
+use App\services\ReductionService;
+use App\services\ProductService;
 
 class ProductController extends AbstractController {
     /**
      * @Route("/", name="product")
      */
-    public function index(ProductRepository $repository, LoggerInterface $logger): Response
-    {
-        $products = $repository->findAll();
-        $logger->info($products[0]->getName());
+    public function index(ProductRepository $productRepository, ProductService $productService, ReductionService $reductionService) {
+        $products = $productRepository->findAll();
         return $this->render("product/index.html.twig", [
-            "products" => $products
+            "products" => $productService->displayProducts($products),
+            "promoProduct" => $products[0],
+            "promoPrice" => $reductionService->applyReduction($products[0], 1)
         ]);
     }
 }
+
