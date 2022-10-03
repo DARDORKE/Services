@@ -1,7 +1,11 @@
-Créez un service ReductionService dont l'unique méthode applyReduction() applique une réduction à un produit.
-Cette méthode reçoit en argument un produit ainsi que le montant de la réduction et retourne un entier
-représentant le nouveau prix après application de la réduction.
+Pour ce faire, créez un contrôleur DeleteProductController, pointant sur la route /delete/{id},
+chargé de supprimer le produit correspondant à l'id passé en paramètre de l'URL avant de rediriger
+l'utilisateur vers la route racine (/) de votre projet.
 
-Injectez ce service dans la méthode index() de ProductController pour tester une réduction du prix du
-premier produit enregistré en base de données. Mettez à jour votre template Twig pour confirmer le bon
-fonctionnement du service directement depuis le navigateur.
+À vous d'utiliser correctement votre service ProductRepository pour retrouver le produit à supprimer avec
+son id ainsi que le service EntityManagerInterface, proposé par Symfony, pour supprimer l'objet et synchroniser
+la suppression avec la base de données.
+
+Profitez-en pour mettre à jour le template Twig afin que l'on puisse supprimer un produit en cliquant sur son
+nom ou sur une icône, par exemple.
+
