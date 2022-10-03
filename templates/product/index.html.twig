@@ -2,7 +2,9 @@
 
 {% block body %}
     <h2>Nos produits</h2>
-    {{ products }}
-
-    <i>Le produit {{ promoProduct.name }} a un prix réduit de {{ promoPrice }}</i>
+    {% for product in products %}
+        <p> {{ product.name }} => <a href="/delete/{{product.id}}">{{ product.name }}</a> : {{ product.price }} €</p>
+    {% else %}
+        <b>Aucun produit pour le moment</b>
+    {% endfor %}
 {% endblock %}
